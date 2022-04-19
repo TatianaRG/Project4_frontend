@@ -1,1 +1,19 @@
 @import '~bulma/bulma.sass';
+
+* {
+  font-family: 'Apercu',
+  Helvetica,
+  Arial,
+  sans-serif
+}
+
+#homeicon{
+  font-weight: 900;
+  font-size: 20px;
+  text-align: center;
+  width: 100;
+}
+#hero-image {
+  background-image: url('https: //static.independent.co.uk/2021/09/03/13/iStock-1286024201.jpg?quality=75&width=1200&auto=webp');
+  
+}
