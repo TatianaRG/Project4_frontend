@@ -64,7 +64,7 @@ function Navbar() {
             </Link>
           </div>
           <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/about" className="navbar-link is-arrowless">
+            <Link to="/login" className="navbar-link is-arrowless">
               LOGIN
             </Link>
           </div>

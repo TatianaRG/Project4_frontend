@@ -11,7 +11,7 @@ const ItemCard = ({ id, name, brand, image, price }) => {
         </h2>
       </div>
       <div className="card-image has-text-centered">
-        <figure className="image  is-4by3 ">
+        <figure className="image is-2by3 ">
           <img className="imagecard" src={image} alt={name} />
         </figure>
       </div>
