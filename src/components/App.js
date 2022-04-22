@@ -8,6 +8,7 @@ import Shop from './Shop';
 import Register from './Register';
 import Login from './Login';
 import Show from './Show';
+import Basket from './Basket';
 
 const App = () => (
   <BrowserRouter>
@@ -18,6 +19,7 @@ const App = () => (
       <Route path="/products/:id" element={<Show />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/basket" element={<Basket />} />
     </Routes>
   </BrowserRouter>
 );

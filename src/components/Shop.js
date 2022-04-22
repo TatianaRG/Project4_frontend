@@ -33,6 +33,11 @@ function Shop() {
     getData();
   }, []);
 
+  const handleClearFilter = async () => {
+    const { data } = await getProducts();
+    setProducts(data);
+  };
+
   const handleFilter = (event) => {
     const results = products.filter((product) => {
       console.log(product.category);
@@ -42,18 +47,11 @@ function Shop() {
     setProducts(results);
   };
 
-  const handleClearFilter = async () => {
-    const { data } = await getProducts();
-    setProducts(data);
-  };
-
   return (
     <main>
-      <div className="bread-crumbs">
-        <p>SHOP </p>
-        <p>
-          <span className="material-icons">keyboard_arrow_right</span>
-        </p>
+      <div>
+        <p>SHOP</p>
+        <br />
         <p>Products</p>
       </div>
       <h1 className="noto-sans">ALL PRODUCTS</h1>

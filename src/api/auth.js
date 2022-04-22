@@ -28,3 +28,15 @@ export const loginUser = async (credentials) => {
   console.log('login data', data);
   return data;
 };
+
+export const getSingleUser = async () => {
+  const options = {
+    method: 'GET',
+    url: `${baseUrl}/authentication/profile/`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
+    },
+  };
+  const { data } = await axios.request(options);
+  return data;
+};
