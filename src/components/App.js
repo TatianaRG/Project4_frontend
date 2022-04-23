@@ -9,6 +9,8 @@ import Register from './Register';
 import Login from './Login';
 import Show from './Show';
 import Basket from './Basket';
+import Footer from './Footer';
+import Profile from './Profile';
 
 const App = () => (
   <BrowserRouter>
@@ -20,7 +22,9 @@ const App = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/basket" element={<Basket />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
+    <Footer />
   </BrowserRouter>
 );
 

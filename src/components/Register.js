@@ -1,9 +1,11 @@
 import React from 'react';
 import { registerUser } from '../api/auth';
 import { useNavigate, Link } from 'react-router-dom';
+import Popup from './Popup';
 
 function Register() {
   const navigate = useNavigate();
+  const [popup, setPopup] = React.useState({});
   const [user, setUser] = React.useState({
     username: '',
     password: '',
@@ -23,6 +25,7 @@ function Register() {
         navigate('/login');
       } catch (error) {
         console.log(error.response.data);
+        setPopup({ isVisible: true, message: error.response.data.password[0] });
       }
     };
     getData();
@@ -35,6 +38,9 @@ function Register() {
   return (
     <section className="section register-section">
       <div className="container">
+        <Popup trigger={popup.isVisible} setTrigger={setPopup}>
+          <h2>{popup.message}</h2>
+        </Popup>
         <div className="columns">
           <form
             className="column is-half is-offset-one-quarter box"

@@ -20,58 +20,61 @@ function Homepage() {
 
   return (
     <>
-      <section className="hero is-large is-info" id="hero-image">
-        <div className="hero-body">
-          <p className="title">Large hero</p>
-          <p className="subtitle">Large subtitle</p>
-        </div>
-      </section>
-      <marquee scrollamount="10" direction="left" behavior="scroll">
-        <h2 style={{ fontWeight: 900, color: '#2b580c' }}>
-          {' '}
-          RE/WEAR | REDUCE | REPURPOSE | RECYCLE | RE/WEAR | REDUCE | REPURPOSE
-          | RECYCLE | RE/WEAR | REDUCE | REPURPOSE | RECYCLE | RE/WEAR | REDUCE
-          | REPURPOSE | RECYCLE | RE/WEAR | REDUCE | REPURPOSE | RECYCLE |
-          RE/WEAR | REDUCE | REPURPOSE | RECYCLE | RE/WEAR |{' '}
-        </h2>
-      </marquee>
-      <section className="hero is-light">
-        <div className="hero-body">
-          <p className="title">New in</p>
-          <Splide
-            options={{
-              perPage: 3,
-              rewind: true,
-              arrows: true,
-              pagination: false,
-              drag: 'free',
-              gap: '20px',
-              breakpoints: {
-                1024: {
-                  perPage: 3,
-                },
-                768: {
-                  perPage: 2,
-                },
-                500: {
-                  perPage: 1,
-                },
-              },
-            }}
+      <main className="home-section">
+        <section className="hero is-large is-info" id="hero-image">
+          <div className="hero-body is-flex"></div>
+        </section>
+        <marquee scrollamount="10" direction="left" behavior="scroll">
+          <h2
+            style={{ fontWeight: 1900, color: '#2b580c' }}
+            className="has-text-weight-bold"
           >
-            {newness ? (
-              newness.map((item) => (
-                <SplideSlide key={item.id}>
-                  <ItemCard key={item.id} {...item} />
-                </SplideSlide>
-              ))
-            ) : (
-              <p>Loading...</p>
-            )}
-          </Splide>
+            {' '}
+            RE/WEAR | REDUCE | REPURPOSE | RECYCLE | RE/WEAR | REDUCE |
+            REPURPOSE | RECYCLE | RE/WEAR | REDUCE | REPURPOSE | RECYCLE |
+            RE/WEAR | REDUCE | REPURPOSE | RECYCLE | RE/WEAR | REDUCE |
+            REPURPOSE | RECYCLE | RE/WEAR | REDUCE | REPURPOSE | RECYCLE |
+            RE/WEAR |{' '}
+          </h2>
+        </marquee>
+        <div className="hero-body">
+          <div className="container">
+            <p className="title">New in</p>
+            <Splide
+              options={{
+                perPage: 4,
+                rewind: true,
+                arrows: true,
+                pagination: false,
+                drag: 'free',
+                gap: '20px',
+                breakpoints: {
+                  1024: {
+                    perPage: 3,
+                  },
+                  768: {
+                    perPage: 2,
+                  },
+                  500: {
+                    perPage: 1,
+                  },
+                },
+              }}
+            >
+              {newness ? (
+                newness.map((item) => (
+                  <SplideSlide className="card-image" key={item.id}>
+                    <ItemCard key={item.id} {...item} />
+                  </SplideSlide>
+                ))
+              ) : (
+                <p>Loading...</p>
+              )}
+            </Splide>
+          </div>
         </div>
-      </section>
-      )
+        )
+      </main>
     </>
   );
 }

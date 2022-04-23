@@ -1,10 +1,17 @@
 @import '~bulma/bulma.sass';
 
-* {
-  font-family: 'Apercu',
-  Helvetica,
-  Arial,
-  sans-serif
+// * {
+//   font-family: 'Apercu',
+//   Helvetica,
+//   Arial,
+//   sans-serif
+// }
+
+body {
+  font-family: 'Merriweather',
+    serif;
+  font-family: 'Nunito Sans',
+    sans-serif;
 }
 
 #homeicon{
@@ -14,6 +21,117 @@
   width: 100;
 }
 #hero-image {
-  background-image: url('https: //static.independent.co.uk/2021/09/03/13/iStock-1286024201.jpg?quality=75&width=1200&auto=webp');
-  
+  background-image: url('https://d18lkz4dllo6v2.cloudfront.net/cumulus_uploads/entry/2019-06-26/organic%20clothes.png?pw=2400');
+background-size: cover;  
+}
+
+
+.navbar {
+  background-color: #ebf5ee
+}
+
+// .hero &.has-background {position: relative ;
+//   overflow: hidden ;
+//   &-background position: absolute 
+//   object-fit: cover 
+//   object-position: center center 
+//   width: 100% 
+//   height: 100% 
+// }
+//   &.is-transparent opacity: 0.3
+
+.card {
+  position: relative;
+}
+
+.image-card-overlay {
+  font-family: 'Comfortaa', cursive;
+}
+
+.image-card-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  float: left;
+  padding: 15px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  text-align: center;
+  background-color: rgba(52, 52, 52, 0.5);
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  opacity: 0;
+  border-radius: 10px;
+  transition: 0.3s ease;
+}
+
+.image-card-overlay:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+// .footer {
+//   height: 120px;
+//   background-color: red;
+//   padding-top: 10px;
+// }
+
+.login-section {
+min-height: calc(100vh - 264px);
+}
+
+.register-section {
+  min-height: calc(100vh - 264px);
+
+}
+
+.home-section {
+  min-height: calc(100vh - 264px);
+
+}
+.footer { 
+  background-color: #ebf5ee;
+  text-emphasis-color: black;
+
+}
+
+//Popup Window
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+}
+
+.popup-inner {
+  position: relative;
+  padding: 32px;
+  width: 100%;
+  max-width: 640px;
+  background-color: white;
+}
+
+.popup-inner .popup-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.popup-btn {
+  background-color: #1e293b;
+  color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  font-weight: 500;
 }

@@ -1,76 +1,92 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { getLoggedInUserId } from '../lib/auth.js';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faShoppingBasket,
+  faUserCircle,
+  faUserSecret,
+  faUsersRectangle,
+} from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
-  const handleMenu = () => {
-    const burger = document.querySelector('.burger');
-    const menuList = document.querySelector('#' + burger.dataset.target);
+  const navigate = useNavigate();
 
-    burger.classList.toggle('is-active');
-    menuList.classList.toggle('is-active');
+  const handleLogout = () => {
+    sessionStorage.removeItem('token');
+    navigate('/');
   };
 
   return (
-    <nav className="navbar is-danger is-fixed-top">
-      <div className="navbar-brand">
-        <Link id="homeicon" className="navbar-item has-text-centered" to="/">
-          RE/WEAR
-        </Link>
-        <a
-          role="button"
-          className="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navDrop"
-          onClick={handleMenu}
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div className="navbar-menu">
-        <div className="navbar-start">
-          <div className="navbar-item has-dropdown is-hoverable">
+    <>
+      <nav className="navbar">
+        <div className="navbar-brand">
+          <Link id="homeicon" className="navbar-item has-text-centered" to="/">
+            RE/WEAR
+          </Link>
+        </div>
+
+        <div className="navbar-start is-mobile">
+          <div className="navbar-item ">
             <Link to="/about" className="navbar-link is-arrowless">
               ABOUT
             </Link>
           </div>
-          <div className="navbar-item has-dropdown is-hoverable">
+          <div className="navbar-item is-hoverable">
             <Link to="/products" className="navbar-link is-arrowless">
               SHOP
             </Link>
           </div>
         </div>
+
         <div className="navbar-end">
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/profile" className="navbar-link is-arrowless">
-              profile
-            </Link>
+          <div className="navbar-item is-hoverable">
+            {getLoggedInUserId() && (
+              <Link to="/profile" className="navbar-link is-arrowless">
+                <FontAwesomeIcon icon={faUserCircle} />
+              </Link>
+            )}
           </div>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/wishlist" className="navbar-link is-arrowless">
-              wishlist
-            </Link>
+
+          <div className="navbar-item is-hoverable">
+            {getLoggedInUserId() && (
+              <Link to="/basket" className="navbar-link is-arrowless">
+                <FontAwesomeIcon icon={faShoppingBasket} />
+              </Link>
+            )}
           </div>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/basket" className="navbar-link is-arrowless">
-              basket
-            </Link>
+
+          <div className="navbar-item is-hoverable">
+            {!getLoggedInUserId() && (
+              <Link to="/register" className="navbar-link is-arrowless">
+                REGISTER
+              </Link>
+            )}
           </div>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/register" className="navbar-link is-arrowless">
-              REGISTER
-            </Link>
+
+          <div className="navbar-item is-hoverable">
+            {!getLoggedInUserId() && (
+              <Link to="/login" className="navbar-link is-arrowless">
+                LOGIN
+              </Link>
+            )}
           </div>
-          <div className="navbar-item has-dropdown is-hoverable">
-            <Link to="/login" className="navbar-link is-arrowless">
-              LOGIN
-            </Link>
+
+          <div className="navbar-item is-hoverable">
+            {getLoggedInUserId() && (
+              <Link
+                to="/"
+                className="navbar-link is-arrowless"
+                onClick={handleLogout}
+              >
+                LOGOUT
+              </Link>
+            )}
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 

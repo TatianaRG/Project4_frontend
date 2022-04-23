@@ -37,29 +37,6 @@ function Basket() {
   };
 
   return (
-    // <div className="section">
-    //   <div className="container">
-    //     <h1 className="is-size-3 py-5 mt-2 title">Shopping cart</h1>
-    //     <p>Please review and confirm your order</p>
-    //     <div className="columns">
-    //     {basketItems && basketItems.length >0 ? (
-    //      {basketItems.map((item, index) => {
-    //        return (
-    //          <div className='column is-half' key={item.id}>
-    //          <figure className='image is-128x128'>
-    //          <img src={item.product.image} alt={item.product.name}/>
-    //          </figure>
-    //          </div>
-    //        )
-
-    //      })}
-
-    //     )}:
-
-    //     </div>
-    //   </div>
-    // </div>
-
     <div className="section">
       <div className="container is-max-desktop">
         <div className="container py-6">
@@ -105,18 +82,18 @@ function Basket() {
             )}
             <div className="column is-one-third py-6">
               <div className="card is-vertical">
-                <h1 className="card-header-title">Shopping Bag:</h1>
+                <h1 className="title has-text-centered pt-5">Shopping Bag</h1>
                 <hr />
-                <div className="card-content has-text-weight-bold">
+                <div className="card-content has-text-weight-bold has-text-centered">
                   Total Inc VAT: £
-                  {basketItems?.reduce((total, curr) => {
-                    return total + curr.product.price;
-                  }, 0)}
                 </div>
               </div>
               <div className="card-content">
+                <button className="button is-info is-rounded is-fullwidth my-4">
+                  Continue to checkout
+                </button>
                 <button className="button is-info is-rounded is-fullwidth">
-                  Checkout
+                  Continue shopping
                 </button>
               </div>
             </div>

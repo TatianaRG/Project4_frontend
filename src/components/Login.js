@@ -1,9 +1,11 @@
 import React from 'react';
 import { loginUser } from '../api/auth';
 import { useNavigate, Link } from 'react-router-dom';
+import Popup from './Popup';
 
 function Login() {
   const navigate = useNavigate();
+  const [popup, setPopup] = React.useState({});
   const [user, setUser] = React.useState({
     email: '',
     password: '',
@@ -20,9 +22,10 @@ function Login() {
       try {
         await loginUser(user);
 
-        navigate('/products');
+        navigate(-1);
       } catch (error) {
         console.log(error.response.data);
+        setPopup({ isVisible: true, message: error.response.data.message });
       }
     };
     getData();
@@ -31,6 +34,9 @@ function Login() {
   return (
     <section className="section login-section">
       <div className="container">
+        <Popup trigger={popup.isVisible} setTrigger={setPopup}>
+          <h2>{popup.message}</h2>
+        </Popup>
         <div className="columns">
           <form
             onSubmit={handleSubmit}
