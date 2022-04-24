@@ -84,8 +84,11 @@ function Basket() {
               <div className="card is-vertical">
                 <h1 className="title has-text-centered pt-5">Shopping Bag</h1>
                 <hr />
-                <div className="card-content has-text-weight-bold has-text-centered">
+                <div className="card-content has-text-weight-bold">
                   Total Inc VAT: £
+                  {basketItems?.reduce((total, curr) => {
+                    return total + curr.product.price;
+                  }, 0)}
                 </div>
               </div>
               <div className="card-content">
