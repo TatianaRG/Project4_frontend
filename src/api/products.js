@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { baseUrl } from '../config.js';
 
-const baseUrl = 'https://myrewearapp.herokuapp.com';
+// const baseUrl = 'https://myrewearapp.herokuapp.com';
 
 export const getNewness = async () => {
   const options = {

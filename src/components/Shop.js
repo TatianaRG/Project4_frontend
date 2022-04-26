@@ -2,6 +2,7 @@ import React from 'react';
 import { getProducts, getCategories } from '../api/products';
 import { Link } from 'react-router-dom';
 import ItemCard from './ItemCard';
+import { format } from 'date-fns';
 
 function Shop() {
   const [products, setProducts] = React.useState(null);

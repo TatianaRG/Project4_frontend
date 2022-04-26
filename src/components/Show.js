@@ -83,6 +83,7 @@ function Show() {
             ) : (
               <button
                 className="button is-info is-medium is-rounded mr-5"
+                id="btn-add"
                 onClick={handleAddBasket}
               >
                 Add to basket

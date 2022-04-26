@@ -1,11 +1,17 @@
 import React from 'react';
 import { getSingleUser } from '../api/auth';
 import { deleteBasketItem, getAllBasketItems } from '../api/products';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import Popup from './Popup';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 function Basket() {
   const [basketItems, setBasketItems] = React.useState(null);
   const [user, setUser] = React.useState(null);
+  const [popup, setPopup] = React.useState({});
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     const getData = async () => {
@@ -36,6 +42,12 @@ function Basket() {
     }
   };
 
+  function handleCheckout(event) {
+    event.preventDefault();
+    setPopup({ isVisible: true, message: 'Thank you for your purchase!' });
+    setBasketItems(null);
+  }
+
   return (
     <div className="section">
       <div className="container is-max-desktop">
@@ -47,7 +59,7 @@ function Basket() {
           <div className="columns is-multiline">
             {basketItems && basketItems.length > 0 ? (
               <div className="column is-two-thirds py-6">
-                {basketItems.map((item, index) => {
+                {basketItems.map((item) => {
                   return (
                     <div
                       className="card is-half is-horizontal columns py-6"
@@ -92,11 +104,15 @@ function Basket() {
                 </div>
               </div>
               <div className="card-content">
-                <button className="button is-info is-rounded is-fullwidth my-4">
+                <Popup trigger={popup.isVisible} setTrigger={setPopup}>
+                  <h2>{popup.message}</h2>
+                </Popup>
+                <button
+                  className="button is-info is-rounded is-fullwidth my-4"
+                  id="btn-add"
+                  onClick={handleCheckout}
+                >
                   Continue to checkout
-                </button>
-                <button className="button is-info is-rounded is-fullwidth">
-                  Continue shopping
                 </button>
               </div>
             </div>

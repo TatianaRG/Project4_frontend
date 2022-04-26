@@ -25,7 +25,15 @@ function Register() {
         navigate('/login');
       } catch (error) {
         console.log(error.response.data);
-        setPopup({ isVisible: true, message: error.response.data.password[0] });
+
+        let errorMessage = ' ';
+
+        for (var key in error.response.data) {
+          errorMessage +=
+            'For' + ' ' + key + ' ' + error.response.data[key] + ' \n';
+        }
+
+        setPopup({ isVisible: true, message: errorMessage });
       }
     };
     getData();
@@ -39,7 +47,7 @@ function Register() {
     <section className="section register-section">
       <div className="container">
         <Popup trigger={popup.isVisible} setTrigger={setPopup}>
-          <h2>{popup.message}</h2>
+          <h2> {popup.message}</h2>
         </Popup>
         <div className="columns">
           <form
@@ -55,6 +63,7 @@ function Register() {
                   name="username"
                   onChange={handleChange}
                   value={user.username}
+                  // required
                 />
               </div>
             </div>
@@ -69,6 +78,7 @@ function Register() {
                   name="password"
                   onChange={handleChange}
                   value={user.password}
+                  // required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-lock"></i>
@@ -86,6 +96,7 @@ function Register() {
                   name="password_confirmation"
                   onChange={handleChange}
                   value={user.password_confirmation}
+                  // required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-lock"></i>
@@ -102,6 +113,7 @@ function Register() {
                   name="email"
                   onChange={handleChange}
                   value={user.email}
+                  // required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-envelope"></i>
@@ -141,6 +153,7 @@ function Register() {
                   name="address"
                   onChange={handleChange}
                   value={user.address}
+                  // required
                 />
                 <span className="icon is-small is-left">
                   <i className="fas fa-envelope"></i>

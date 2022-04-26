@@ -28,11 +28,6 @@ function Navbar() {
         </div>
 
         <div className="navbar-start is-mobile">
-          <div className="navbar-item ">
-            <Link to="/about" className="navbar-link is-arrowless">
-              ABOUT
-            </Link>
-          </div>
           <div className="navbar-item is-hoverable">
             <Link to="/products" className="navbar-link is-arrowless">
               SHOP
