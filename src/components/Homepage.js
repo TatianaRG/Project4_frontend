@@ -38,7 +38,7 @@ function Homepage() {
           </h2>
         </marquee>
         <div className="hero-body">
-          <div className="container">
+          <div className="container is-mobile">
             <p className="title">New in</p>
             <Splide
               options={{
@@ -50,7 +50,7 @@ function Homepage() {
                 gap: '20px',
                 breakpoints: {
                   1024: {
-                    perPage: 3,
+                    perPage: 4,
                   },
                   768: {
                     perPage: 2,
@@ -63,8 +63,8 @@ function Homepage() {
             >
               {newness ? (
                 newness.map((item) => (
-                  <SplideSlide className="card-image" key={item.id}>
-                    <ItemCard key={item.id} {...item} />
+                  <SplideSlide className="image " key={item.id}>
+                    <ItemCard className="imagecard" key={item.id} {...item} />
                   </SplideSlide>
                 ))
               ) : (

@@ -4,8 +4,8 @@ import { deleteBasketItem, getAllBasketItems } from '../api/products';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 function Basket() {
   const [basketItems, setBasketItems] = React.useState(null);
